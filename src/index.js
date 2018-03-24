@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import './css/app.css';
 
 class HelloMessage extends React.Component {
   render() {
@@ -8,4 +9,4 @@ class HelloMessage extends React.Component {
 }
 
 var mountNode = document.getElementById("app");
-ReactDOM.render(<HelloMessage name="Woneee ... insecure" />, mountNode);
+ReactDOM.render(<HelloMessage name="Woneee ... " />, mountNode);
