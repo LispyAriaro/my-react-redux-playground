@@ -1,12 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './css/app.css';
-
-class HelloMessage extends React.Component {
-  render() {
-    return <div>Hello {this.props.name}</div>;
-  }
-}
+import AppRoutes from './AppRoutes';
 
 var mountNode = document.getElementById("app");
-ReactDOM.render(<HelloMessage name="Woneee ... " />, mountNode);
+ReactDOM.render(<AppRoutes />, mountNode);
