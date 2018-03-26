@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
-
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import {
+  increment,
+  incrementAsync,
+  decrement,
+  decrementAsync
+} from '../reducers/counter'
+
 
 class Home extends Component {
   render() {
@@ -16,4 +24,22 @@ class Home extends Component {
   }
 }
 
-export default Home;
+// export default Home;
+
+const mapStateToProps = state => ({
+  count: state.counter.count,
+  isIncrementing: state.counter.isIncrementing,
+  isDecrementing: state.counter.isDecrementing
+})
+  
+const mapDispatchToProps = dispatch => bindActionCreators({
+  increment,
+  incrementAsync,
+  decrement,
+  decrementAsync
+}, dispatch)
+  
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home)
