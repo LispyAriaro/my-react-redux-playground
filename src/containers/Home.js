@@ -26,9 +26,21 @@ function handleSelect(selectedKey) {
 }
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.goToLogin = this.goToLogin.bind(this);
+    this.goToSignup = this.goToSignup.bind(this);    
+  }
+
   goToLogin() {
     console.log(`props: `, this.props)
     this.props.history.push('/mc-admin/businesslogin')
+  }
+
+  goToSignup() {
+    console.log(`props: `, this.props)
+    this.props.history.push('/mc-admin/businesssignup')
   }
 
   render() {
@@ -47,14 +59,14 @@ class Home extends Component {
               <NavItem eventKey={1} href="#" onSelect={this.goToLogin}>
                 Login
               </NavItem>
-              <NavItem eventKey={2} href="#">
+              <NavItem eventKey={2} href="#" onSelect={this.goToSignup}>
                 Signup
               </NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>;
 
-        <form>
+        {/* <form>
           <FormGroup controlId="formControlsSelect">
             <ControlLabel>Select</ControlLabel>
             <FormControl componentClass="select" placeholder="select">
@@ -81,7 +93,7 @@ class Home extends Component {
           </FormGroup>
 
           <Button type="submit">Submit</Button>
-        </form>
+        </form> */}
 
           {/* No change to give a customer? We can help with that. We help record how much change is owed.
           <div className="">
