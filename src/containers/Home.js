@@ -8,13 +8,14 @@ import {
   increment,
   incrementAsync,
   decrement,
-  decrementAsync
+  decrementAsync,
+  loginPage,
+  signupPage
 } from '../reducers/counter'
 
 // import Button from 'react-bootstrap/lib/Button';
 // or
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
-
 import { FieldGroup, FormControl, FormGroup, Checkbox, Radio, Button, ControlLabel } from 'react-bootstrap';
 
 import '../css/homePageStyles.css';
@@ -36,14 +37,24 @@ class Home extends Component {
   goToLogin() {
     console.log(`props: `, this.props)
     this.props.history.push('/mc-admin/businesslogin')
+    this.props.loginPage()
   }
 
   goToSignup() {
     console.log(`props: `, this.props)
     this.props.history.push('/mc-admin/businesssignup')
+    this.props.signupPage()
   }
 
   render() {
+    const onLoginPage = this.props.onLoginPage;
+    
+    const button = !onLoginPage ? (
+      <NavItem eventKey={1} href="#" onSelect={this.goToLogin}>Login</NavItem>
+    ) : (
+      <NavItem eventKey={2} href="#" onSelect={this.goToSignup}>Signup</NavItem>
+    );
+
     return (
       <div>
         <Navbar inverse collapseOnSelect>
@@ -56,12 +67,9 @@ class Home extends Component {
           
           <Navbar.Collapse>
             <Nav pullRight>
-              <NavItem eventKey={1} href="#" onSelect={this.goToLogin}>
-                Login
-              </NavItem>
-              <NavItem eventKey={2} href="#" onSelect={this.goToSignup}>
-                Signup
-              </NavItem>
+              {/* <NavItem eventKey={1} href="#" onSelect={this.goToLogin}>Login</NavItem>
+              <NavItem eventKey={2} href="#" onSelect={this.goToSignup}>Signup</NavItem> */}
+              {button}
             </Nav>
           </Navbar.Collapse>
         </Navbar>;
@@ -95,41 +103,52 @@ class Home extends Component {
           <Button type="submit">Submit</Button>
         </form> */}
 
-          {/* No change to give a customer? We can help with that. We help record how much change is owed.
-          <div className="">
+
+          {/* No change to give a customer? We can help with that. We help record how much change is owed. */}
+
+          {/* <div className="">
               <Link to="/mc-admin/businesslogin">Log in</Link>
               <Link to="/mc-admin/businessSignup">Sign up</Link>
-          </div>
+          </div> */}
 
           <p>Count: {this.props.count}</p>
 
           <p>
             <button onClick={this.props.increment} disabled={this.props.isIncrementing}>Increment</button>
             <button onClick={this.props.incrementAsync} disabled={this.props.isIncrementing}>Increment Async</button>
-          </p> */}
+          </p>
       </div>
     );
   }
 }
 
 Home.propTypes = {
-  increment: PropTypes.func.isRequired
+  increment: PropTypes.func.isRequired,
+  incrementAsync: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
+  decrementAsync: PropTypes.func.isRequired,
+  onLoginPage: PropTypes.bool.isRequired,
+  onSignupPage: PropTypes.bool.isRequired
 };
 
 
 // export default Home;
 
 const mapStateToProps = state => ({
-  count: state.counter.get('value'),
+  count: state.counter.value,
   isIncrementing: state.counter.isIncrementing,
-  isDecrementing: state.counter.isDecrementing
+  isDecrementing: state.counter.isDecrementing,
+  onLoginPage: state.counter.onLoginPage,
+  onSignupPage: state.counter.onSignupPage
 })
   
 const mapDispatchToProps = dispatch => bindActionCreators({
   increment,
   incrementAsync,
   decrement,
-  decrementAsync
+  decrementAsync,
+  loginPage, 
+  signupPage
 }, dispatch)
 
 export default connect(

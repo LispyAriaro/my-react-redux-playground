@@ -1,19 +1,22 @@
-import { fromJS } from 'immutable';
+// import { fromJS } from 'immutable';
 
 /* Constants */
-
 const INCREMENT = 'INCREMENT';
 const DECREMENT = 'DECREMENT';
 const INCREMENT_REQUESTED = 'INCREMENT_REQUESTED';
 const DECREMENT_REQUESTED = 'DECREMENT_REQUESTED';
+const LOGIN_PAGE = 'LOGIN_PAGE';
+const SIGNUP_PAGE = 'SIGNUP_PAGE';
 
 /* Reducer */
 
-const initialState = fromJS({
+const initialState = {
   value: 0,
   isIncrementing: false,
-  isDecrementing: false
-});
+  isDecrementing: false,
+  onLoginPage: false,
+  onSignupPage: false
+};
 
 
 
@@ -21,16 +24,32 @@ function counterReducer(state = initialState, action = {}) {
   switch (action.type) {
 
   case INCREMENT:
-    return state.update('value', (value) => value + 1);
+    // const newState = {}
+    // Object.assign(newState, state)
+    // newState.value = state.value - 1;
+    // return newState;
 
+    return {...state, value: state.value + 1};
+  
   case DECREMENT:
-    return state.update('value', (value) => value - 1);
+    // const newState = {}
+    // Object.assign(newState, state)
+    // newState.value = state.value - 1;
+    // return newState;
 
-  case INCREMENT_REQUESTED:''
-    return state.update('isIncrementing', (value) => true);
+    return {...state, value: state.value - 1};
 
-  case DECREMENT_REQUESTED:''
-    return state.update('isDecrementing', (value) => true);
+  case INCREMENT_REQUESTED: 
+    return {...state, isIncrementing: true};
+
+  case DECREMENT_REQUESTED: 
+    return {...state, isDecrementing: true};
+
+  case LOGIN_PAGE:
+    return {...state, onLoginPage: true, onSignupPage: false};
+
+  case SIGNUP_PAGE:
+    return {...state, onLoginPage: false, onSignupPage: true};
 
   default:
     return state;
@@ -45,6 +64,17 @@ export default counterReducer;
 export function increment() {
   return {
     type: INCREMENT,
+  };
+}
+
+export function loginPage() {
+  return {
+    type: LOGIN_PAGE,
+  };
+}
+export function signupPage() {
+  return {
+    type: SIGNUP_PAGE,
   };
 }
 
