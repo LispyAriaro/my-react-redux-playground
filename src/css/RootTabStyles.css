@@ -1,0 +1,79 @@
+/* Adapted from: http://www.w3schools.com/howto/howto_js_tabs.asp*/
+
+/* Style the tab content */
+.tabcontent {
+    //display: none;
+    //padding: 6px 12px;
+    //border-top: none;
+
+    //border: 1px solid #ccc;
+}
+
+#videosList {
+    border: 1px solid #ccc;
+}
+
+.spanTabs {
+    list-style-type: none;
+    text-align: center;
+    min-width: 300px;
+    height: 35px;
+    //margin: 0;
+    //margin-top: 15px;
+    margin-top: 0px;
+
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+
+    //background-color: #f1f1f1;
+    //background-color: #f18a72;
+    background-color: #2c3e50;
+    //background-color: #18bc9c;
+}
+
+/* Float the list items side by side */
+.spanTabs span {
+    //float: left;
+    //display: inline;
+    text-align: center;
+    //cursor: pointer;
+    cursor: hand;
+    margin-bottom: 0px;
+
+    //New property ammendment
+    width : 40%;
+}
+
+/*.tabcontent li:nth-child(odd) { background: #cfcfcf; } */
+
+/* Style the links inside the list items */
+.spanTabs span a {
+    display: inline-block;
+    color: white;
+    padding: 5px 5px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Change background color of links on hover */
+.spanTabs span a:hover {
+    //background-color: #ddd;
+
+    border-bottom: 3px solid #fff;
+}
+
+/* Create an active/current tablink class */
+.spanTabs span a:focus, .active {
+    //background-color: #ccc;
+    //color: white;
+
+    border-bottom: 3px solid #fff;
+}
+
+.selectedTab {
+    
+    border-bottom: 3px solid #fff;
+}
