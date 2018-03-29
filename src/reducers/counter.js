@@ -78,18 +78,6 @@ export function signupPage() {
   };
 }
 
-// export const increment = () => {
-//   return dispatch => {
-//     dispatch({
-//       type: INCREMENT_REQUESTED
-//     })
-
-//     dispatch({
-//       type: INCREMENT
-//     })
-//   }
-// }
-
 export function decrement() {
   return {
     type: DECREMENT,

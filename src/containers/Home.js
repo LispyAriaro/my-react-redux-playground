@@ -15,7 +15,7 @@ import {
 
 // import Button from 'react-bootstrap/lib/Button';
 // or
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Nav, Navbar, NavItem, NavDropdown, MenuItem, Carousel } from 'react-bootstrap';
 import { FieldGroup, FormControl, FormGroup, Checkbox, Radio, Button, ControlLabel } from 'react-bootstrap';
 
 import '../css/homePageStyles.css';
@@ -35,13 +35,11 @@ class Home extends Component {
   }
 
   goToLogin() {
-    console.log(`props: `, this.props)
     this.props.history.push('/mc-admin/businesslogin')
     this.props.loginPage()
   }
 
   goToSignup() {
-    console.log(`props: `, this.props)
     this.props.history.push('/mc-admin/businesssignup')
     this.props.signupPage()
   }
@@ -111,12 +109,12 @@ class Home extends Component {
               <Link to="/mc-admin/businessSignup">Sign up</Link>
           </div> */}
 
-          <p>Count: {this.props.count}</p>
+          {/* <p>Count: {this.props.count}</p>
 
           <p>
             <button onClick={this.props.increment} disabled={this.props.isIncrementing}>Increment</button>
             <button onClick={this.props.incrementAsync} disabled={this.props.isIncrementing}>Increment Async</button>
-          </p>
+          </p> */}
       </div>
     );
   }

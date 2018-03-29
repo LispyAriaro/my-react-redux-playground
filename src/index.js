@@ -13,5 +13,5 @@ var mountNode = document.getElementById("app");
 
 ReactDOM.render(
   <Provider store={store}>
-    <AppRoutes history={ history }/>
+    <AppRoutes />
   </Provider>, mountNode);
