@@ -29,7 +29,6 @@
   },
   "scripts": {
     "builddev": "webpack --mode development",
-    "dev": "webpack-dev-server --mode development --hot --inline --content-base=dist",
-    "dev2": "webpack-dev-server --mode development --hot --inline"
+    "dev": "webpack-dev-server --mode development --hot --inline --content-base=public --history-api-fallback"
   }
 }

@@ -5,13 +5,13 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 // Constant with our paths
 // Not really used for now
 const paths = {
-    dist: path.resolve(__dirname, 'dist'),
+    dist: path.resolve(__dirname, 'public'),
 };
 
 const config = {
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'public'),
         filename: 'bundle.js'
     },
     devtool: 'source-map',
@@ -29,19 +29,20 @@ const config = {
         ]
     },
     devServer: {
+        historyApiFallback: true,
         inline: true,
         hot:true,
-        contentBase: 'dist'
+        contentBase: 'public'
     },
     // plugins: [
     //   new HtmlWebPackPlugin({
-    //     template: path.join(paths.dist, 'index.html')
+    //     template: path.join(paths.public, 'index.html')
     //   })
     // ]
 
     // plugins: [
     //   new HtmlWebPackPlugin({
-    //     template: "./dist/index.html",
+    //     template: "./public/index.html",
     //     filename: "./index.html"
     //   })
     // ]

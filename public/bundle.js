@@ -47205,15 +47205,7 @@ var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_module
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import { Router, Route } from 'react-router-dom';
-
-
-// const Home = () => <h1>Home</h1>;
-// const Admin = () => <h1>Admin</h1>;
-
-// The 'history' passed here isn't used
-
-var AppRoutes = function AppRoutes(history) {
+var AppRoutes = function AppRoutes() {
     return _react2.default.createElement(
         _reactRouterDom.BrowserRouter,
         null,
@@ -47251,6 +47243,16 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _counter = __webpack_require__(/*! ../reducers/counter */ "./src/reducers/counter.js");
+
+var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47259,22 +47261,88 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var styles = {
+  buttonColorStyles: {
+    backgroundColor: '#38465b',
+    color: '#ffffff'
+    // fontSize: 35,
+    // fontWeight: '600',
+  },
+  cursorStyle: {
+    cursor: 'pointer'
+  }
+};
+
 var BusinessLogin = function (_Component) {
   _inherits(BusinessLogin, _Component);
 
-  function BusinessLogin() {
+  function BusinessLogin(props) {
     _classCallCheck(this, BusinessLogin);
 
-    return _possibleConstructorReturn(this, (BusinessLogin.__proto__ || Object.getPrototypeOf(BusinessLogin)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (BusinessLogin.__proto__ || Object.getPrototypeOf(BusinessLogin)).call(this, props));
+
+    _this.goToSignup = _this.goToSignup.bind(_this);
+    return _this;
   }
 
   _createClass(BusinessLogin, [{
+    key: 'goToSignup',
+    value: function goToSignup() {
+      this.props.history.push('/mc-admin/businesssignup');
+      this.props.signupPage();
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
         null,
-        'log-in'
+        _react2.default.createElement(
+          'div',
+          { className: 'col-md-6 col-md-offset-3' },
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group input-group' },
+            _react2.default.createElement(
+              'span',
+              { className: 'input-group-addon' },
+              _react2.default.createElement('i', { className: 'glyphicon glyphicon-envelope' })
+            ),
+            _react2.default.createElement('input', { className: 'form-control input-lg', type: 'text', name: 'businessAdminEmail', placeholder: 'Email address' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group input-group' },
+            _react2.default.createElement(
+              'span',
+              { className: 'input-group-addon' },
+              _react2.default.createElement('i', { className: 'glyphicon glyphicon-lock' })
+            ),
+            _react2.default.createElement('input', { className: 'form-control input-lg', type: 'password', name: 'password', placeholder: 'Password' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+              'button',
+              { type: 'button', className: 'btn btn-def btn-block btn-lg', style: styles.buttonColorStyles },
+              _react2.default.createElement(
+                'b',
+                null,
+                'Log in'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group text-center' },
+            _react2.default.createElement(
+              'a',
+              { style: styles.cursorStyle },
+              'Forgot Password'
+            )
+          )
+        )
       );
     }
   }]);
@@ -47282,7 +47350,20 @@ var BusinessLogin = function (_Component) {
   return BusinessLogin;
 }(_react.Component);
 
-exports.default = BusinessLogin;
+// export default BusinessLogin;
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    onLoginPage: state.counter.onLoginPage,
+    onSignupPage: state.counter.onSignupPage
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return (0, _redux.bindActionCreators)({ signupPage: _counter.signupPage }, dispatch);
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)((0, _reactRouterDom.withRouter)(BusinessLogin));
 
 /***/ }),
 
@@ -47306,6 +47387,16 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _counter = __webpack_require__(/*! ../reducers/counter */ "./src/reducers/counter.js");
+
+var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47314,22 +47405,107 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var styles = {
+  buttonColorStyles: {
+    backgroundColor: '#38465b',
+    color: '#ffffff'
+  },
+  cursorStyle: {
+    cursor: 'pointer'
+  }
+};
+
 var BusinessSignup = function (_Component) {
   _inherits(BusinessSignup, _Component);
 
-  function BusinessSignup() {
+  function BusinessSignup(props) {
     _classCallCheck(this, BusinessSignup);
 
-    return _possibleConstructorReturn(this, (BusinessSignup.__proto__ || Object.getPrototypeOf(BusinessSignup)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (BusinessSignup.__proto__ || Object.getPrototypeOf(BusinessSignup)).call(this, props));
+
+    _this.goToLogin = _this.goToLogin.bind(_this);
+    return _this;
   }
 
   _createClass(BusinessSignup, [{
+    key: 'goToLogin',
+    value: function goToLogin() {
+      this.props.history.push('/mc-admin/businesslogin');
+      this.props.loginPage();
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
         null,
-        'Signup'
+        _react2.default.createElement(
+          'div',
+          { className: 'col-md-6 col-md-offset-3' },
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group input-group' },
+            _react2.default.createElement(
+              'span',
+              { className: 'input-group-addon' },
+              _react2.default.createElement('i', { className: 'glyphicon glyphicon-user' })
+            ),
+            _react2.default.createElement('input', { className: 'form-control input-lg', type: 'text', name: 'businessAdminBusinessName', placeholder: 'Business Name' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group input-group' },
+            _react2.default.createElement(
+              'span',
+              { className: 'input-group-addon' },
+              _react2.default.createElement('i', { className: 'glyphicon glyphicon-user' })
+            ),
+            _react2.default.createElement('input', { className: 'form-control input-lg', type: 'text', name: 'businessAdminFirstName', placeholder: 'First Name' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group input-group' },
+            _react2.default.createElement(
+              'span',
+              { className: 'input-group-addon' },
+              _react2.default.createElement('i', { className: 'glyphicon glyphicon-user' })
+            ),
+            _react2.default.createElement('input', { className: 'form-control input-lg', type: 'text', name: 'businessAdminLastName', placeholder: 'Last Name' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group input-group' },
+            _react2.default.createElement(
+              'span',
+              { className: 'input-group-addon' },
+              _react2.default.createElement('i', { className: 'glyphicon glyphicon-envelope' })
+            ),
+            _react2.default.createElement('input', { className: 'form-control input-lg', type: 'text', name: 'businessAdminEmail', placeholder: 'Email address' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group input-group' },
+            _react2.default.createElement(
+              'span',
+              { className: 'input-group-addon' },
+              _react2.default.createElement('i', { className: 'glyphicon glyphicon-lock' })
+            ),
+            _react2.default.createElement('input', { className: 'form-control input-lg', type: 'password', name: 'password', placeholder: 'Password' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+              'button',
+              { type: 'button', className: 'btn btn-def btn-block btn-lg', style: styles.buttonColorStyles },
+              _react2.default.createElement(
+                'b',
+                null,
+                'Sign up your business'
+              )
+            )
+          )
+        )
       );
     }
   }]);
@@ -47337,7 +47513,20 @@ var BusinessSignup = function (_Component) {
   return BusinessSignup;
 }(_react.Component);
 
-exports.default = BusinessSignup;
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    onLoginPage: state.counter.onLoginPage,
+    onSignupPage: state.counter.onSignupPage
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return (0, _redux.bindActionCreators)({
+    loginPage: _counter.loginPage
+  }, dispatch);
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)((0, _reactRouterDom.withRouter)(BusinessSignup));
 
 /***/ }),
 
@@ -47409,19 +47598,19 @@ var Home = function (_Component) {
   _createClass(Home, [{
     key: 'goToLogin',
     value: function goToLogin() {
-      console.log('props: ', this.props);
       this.props.history.push('/mc-admin/businesslogin');
+      this.props.loginPage();
     }
   }, {
     key: 'goToSignup',
     value: function goToSignup() {
-      console.log('props: ', this.props);
       this.props.history.push('/mc-admin/businesssignup');
+      this.props.signupPage();
     }
   }, {
     key: 'render',
     value: function render() {
-      var onLoginPage = this.state.counter.onLoginPage;
+      var onLoginPage = this.props.onLoginPage;
 
       var button = !onLoginPage ? _react2.default.createElement(
         _reactBootstrap.NavItem,
@@ -47577,7 +47766,7 @@ var mountNode = document.getElementById("app");
 _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,
   { store: _store2.default },
-  _react2.default.createElement(_AppRoutes2.default, { history: _store.history })
+  _react2.default.createElement(_AppRoutes2.default, null)
 ), mountNode);
 
 /***/ }),
@@ -47635,7 +47824,7 @@ function counterReducer() {
       // newState.value = state.value - 1;
       // return newState;
 
-      return _extends({}, state, { value: state.value - 1 });
+      return _extends({}, state, { value: state.value + 1 });
 
     case DECREMENT:
       // const newState = {}
@@ -47682,18 +47871,6 @@ function signupPage() {
     type: SIGNUP_PAGE
   };
 }
-
-// export const increment = () => {
-//   return dispatch => {
-//     dispatch({
-//       type: INCREMENT_REQUESTED
-//     })
-
-//     dispatch({
-//       type: INCREMENT
-//     })
-//   }
-// }
 
 function decrement() {
   return {

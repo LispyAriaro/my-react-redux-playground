@@ -102,7 +102,7 @@ const mapStateToProps = state => ({
   onLoginPage: state.counter.onLoginPage,
   onSignupPage: state.counter.onSignupPage
 })
-  
+
 const mapDispatchToProps = dispatch => bindActionCreators({
   increment,
   incrementAsync,
