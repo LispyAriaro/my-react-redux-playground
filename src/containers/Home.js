@@ -72,49 +72,12 @@ class Home extends Component {
           </Navbar.Collapse>
         </Navbar>;
 
-        {/* <form>
-          <FormGroup controlId="formControlsSelect">
-            <ControlLabel>Select</ControlLabel>
-            <FormControl componentClass="select" placeholder="select">
-              <option value="select">select</option>
-              <option value="other">...</option>
-            </FormControl>
-          </FormGroup>
+        {/* <p>Count: {this.props.count}</p>
 
-          <FormGroup>
-            <Checkbox inline>1</Checkbox> <Checkbox inline>2</Checkbox>{' '}
-            <Checkbox inline>3</Checkbox>
-          </FormGroup>
-
-          <FormGroup>
-            <Radio name="radioGroup" inline>
-              1
-            </Radio>{' '}
-            <Radio name="radioGroup" inline>
-              2
-            </Radio>{' '}
-            <Radio name="radioGroup" inline>
-              3
-            </Radio>
-          </FormGroup>
-
-          <Button type="submit">Submit</Button>
-        </form> */}
-
-
-          {/* No change to give a customer? We can help with that. We help record how much change is owed. */}
-
-          {/* <div className="">
-              <Link to="/mc-admin/businesslogin">Log in</Link>
-              <Link to="/mc-admin/businessSignup">Sign up</Link>
-          </div> */}
-
-          {/* <p>Count: {this.props.count}</p>
-
-          <p>
-            <button onClick={this.props.increment} disabled={this.props.isIncrementing}>Increment</button>
-            <button onClick={this.props.incrementAsync} disabled={this.props.isIncrementing}>Increment Async</button>
-          </p> */}
+        <p>
+          <button onClick={this.props.increment} disabled={this.props.isIncrementing}>Increment</button>
+          <button onClick={this.props.incrementAsync} disabled={this.props.isIncrementing}>Increment Async</button>
+        </p> */}
       </div>
     );
   }
