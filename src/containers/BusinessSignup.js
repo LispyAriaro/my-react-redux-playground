@@ -3,10 +3,11 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
 import {
   loginPage,
   signupPage
-} from '../reducers/counter'
+} from '../actions/access'
 
 
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
@@ -89,8 +90,8 @@ class BusinessSignup extends Component {
 }
 
 const mapStateToProps = state => ({
-  onLoginPage: state.counter.onLoginPage,
-  onSignupPage: state.counter.onSignupPage
+  onLoginPage: state.access.onLoginPage,
+  onSignupPage: state.access.onSignupPage
 })
 
 const mapDispatchToProps = dispatch => 

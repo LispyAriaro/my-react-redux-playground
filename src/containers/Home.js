@@ -5,13 +5,9 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync,
   loginPage,
   signupPage
-} from '../reducers/counter'
+} from '../actions/access'
 
 // import Button from 'react-bootstrap/lib/Button';
 // or
@@ -71,23 +67,12 @@ class Home extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>;
-
-        {/* <p>Count: {this.props.count}</p>
-
-        <p>
-          <button onClick={this.props.increment} disabled={this.props.isIncrementing}>Increment</button>
-          <button onClick={this.props.incrementAsync} disabled={this.props.isIncrementing}>Increment Async</button>
-        </p> */}
       </div>
     );
   }
 }
 
 Home.propTypes = {
-  increment: PropTypes.func.isRequired,
-  incrementAsync: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired,
-  decrementAsync: PropTypes.func.isRequired,
   onLoginPage: PropTypes.bool.isRequired,
   onSignupPage: PropTypes.bool.isRequired
 };
@@ -96,18 +81,11 @@ Home.propTypes = {
 // export default Home;
 
 const mapStateToProps = state => ({
-  count: state.counter.value,
-  isIncrementing: state.counter.isIncrementing,
-  isDecrementing: state.counter.isDecrementing,
-  onLoginPage: state.counter.onLoginPage,
-  onSignupPage: state.counter.onSignupPage
+  onLoginPage: state.access.onLoginPage,
+  onSignupPage: state.access.onSignupPage
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync,
   loginPage, 
   signupPage
 }, dispatch)

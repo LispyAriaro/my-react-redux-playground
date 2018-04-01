@@ -8,8 +8,6 @@ import store, { history } from './store'
 
 
 var mountNode = document.getElementById("app");
-// ReactDOM.render(<AppRoutes />, mountNode);
-
 
 ReactDOM.render(
   <Provider store={store}>

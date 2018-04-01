@@ -47223,6 +47223,40 @@ exports.default = AppRoutes;
 
 /***/ }),
 
+/***/ "./src/actions/access.js":
+/*!*******************************!*\
+  !*** ./src/actions/access.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loginPage = loginPage;
+exports.signupPage = signupPage;
+var LOGIN_PAGE = exports.LOGIN_PAGE = 'LOGIN_PAGE';
+var SIGNUP_PAGE = exports.SIGNUP_PAGE = 'SIGNUP_PAGE';
+
+/* Actions */
+
+function loginPage() {
+  return {
+    type: LOGIN_PAGE
+  };
+}
+
+function signupPage() {
+  return {
+    type: SIGNUP_PAGE
+  };
+}
+
+/***/ }),
+
 /***/ "./src/containers/BusinessLogin.js":
 /*!*****************************************!*\
   !*** ./src/containers/BusinessLogin.js ***!
@@ -47249,7 +47283,7 @@ var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js"
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var _counter = __webpack_require__(/*! ../reducers/counter */ "./src/reducers/counter.js");
+var _access = __webpack_require__(/*! ../actions/access */ "./src/actions/access.js");
 
 var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 
@@ -47354,13 +47388,13 @@ var BusinessLogin = function (_Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    onLoginPage: state.counter.onLoginPage,
-    onSignupPage: state.counter.onSignupPage
+    onLoginPage: state.access.onLoginPage,
+    onSignupPage: state.access.onSignupPage
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return (0, _redux.bindActionCreators)({ signupPage: _counter.signupPage }, dispatch);
+  return (0, _redux.bindActionCreators)({ signupPage: _access.signupPage }, dispatch);
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)((0, _reactRouterDom.withRouter)(BusinessLogin));
@@ -47393,7 +47427,7 @@ var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js"
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var _counter = __webpack_require__(/*! ../reducers/counter */ "./src/reducers/counter.js");
+var _access = __webpack_require__(/*! ../actions/access */ "./src/actions/access.js");
 
 var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 
@@ -47515,14 +47549,14 @@ var BusinessSignup = function (_Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    onLoginPage: state.counter.onLoginPage,
-    onSignupPage: state.counter.onSignupPage
+    onLoginPage: state.access.onLoginPage,
+    onSignupPage: state.access.onSignupPage
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return (0, _redux.bindActionCreators)({
-    loginPage: _counter.loginPage
+    loginPage: _access.loginPage
   }, dispatch);
 };
 
@@ -47560,7 +47594,7 @@ var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js"
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var _counter = __webpack_require__(/*! ../reducers/counter */ "./src/reducers/counter.js");
+var _access = __webpack_require__(/*! ../actions/access */ "./src/actions/access.js");
 
 var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 
@@ -47661,10 +47695,6 @@ var Home = function (_Component) {
 }(_react.Component);
 
 Home.propTypes = {
-  increment: _propTypes2.default.func.isRequired,
-  incrementAsync: _propTypes2.default.func.isRequired,
-  decrement: _propTypes2.default.func.isRequired,
-  decrementAsync: _propTypes2.default.func.isRequired,
   onLoginPage: _propTypes2.default.bool.isRequired,
   onSignupPage: _propTypes2.default.bool.isRequired
 };
@@ -47673,22 +47703,15 @@ Home.propTypes = {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    count: state.counter.value,
-    isIncrementing: state.counter.isIncrementing,
-    isDecrementing: state.counter.isDecrementing,
-    onLoginPage: state.counter.onLoginPage,
-    onSignupPage: state.counter.onSignupPage
+    onLoginPage: state.access.onLoginPage,
+    onSignupPage: state.access.onSignupPage
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return (0, _redux.bindActionCreators)({
-    increment: _counter.increment,
-    incrementAsync: _counter.incrementAsync,
-    decrement: _counter.decrement,
-    decrementAsync: _counter.decrementAsync,
-    loginPage: _counter.loginPage,
-    signupPage: _counter.signupPage
+    loginPage: _access.loginPage,
+    signupPage: _access.signupPage
   }, dispatch);
 };
 
@@ -47760,8 +47783,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 
 var mountNode = document.getElementById("app");
-// ReactDOM.render(<AppRoutes />, mountNode);
-
 
 _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,
@@ -47771,10 +47792,10 @@ _reactDom2.default.render(_react2.default.createElement(
 
 /***/ }),
 
-/***/ "./src/reducers/counter.js":
-/*!*********************************!*\
-  !*** ./src/reducers/counter.js ***!
-  \*********************************/
+/***/ "./src/reducers/access.js":
+/*!********************************!*\
+  !*** ./src/reducers/access.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -47787,133 +47808,29 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-exports.increment = increment;
-exports.loginPage = loginPage;
-exports.signupPage = signupPage;
-exports.decrement = decrement;
-exports.incrementIfEven = incrementIfEven;
-// import { fromJS } from 'immutable';
-
-/* Constants */
-var INCREMENT = 'INCREMENT';
-var DECREMENT = 'DECREMENT';
-var INCREMENT_REQUESTED = 'INCREMENT_REQUESTED';
-var DECREMENT_REQUESTED = 'DECREMENT_REQUESTED';
-var LOGIN_PAGE = 'LOGIN_PAGE';
-var SIGNUP_PAGE = 'SIGNUP_PAGE';
-
-/* Reducer */
+var _access = __webpack_require__(/*! ../actions/access */ "./src/actions/access.js");
 
 var initialState = {
-  value: 0,
-  isIncrementing: false,
-  isDecrementing: false,
   onLoginPage: false,
   onSignupPage: false
 };
 
-function counterReducer() {
+function accessReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   switch (action.type) {
-
-    case INCREMENT:
-      // const newState = {}
-      // Object.assign(newState, state)
-      // newState.value = state.value - 1;
-      // return newState;
-
-      return _extends({}, state, { value: state.value + 1 });
-
-    case DECREMENT:
-      // const newState = {}
-      // Object.assign(newState, state)
-      // newState.value = state.value - 1;
-      // return newState;
-
-      return _extends({}, state, { value: state.value - 1 });
-
-    case INCREMENT_REQUESTED:
-      return _extends({}, state, { isIncrementing: true });
-
-    case DECREMENT_REQUESTED:
-      return _extends({}, state, { isDecrementing: true });
-
-    case LOGIN_PAGE:
-      return _extends({}, state, { onLoginPage: true, onSignupPage: false });
-
-    case SIGNUP_PAGE:
+    case _access.SIGNUP_PAGE:
       return _extends({}, state, { onLoginPage: false, onSignupPage: true });
+    case _access.LOGIN_PAGE:
+      return _extends({}, state, { onLoginPage: true, onSignupPage: false });
 
     default:
       return state;
   }
 }
 
-exports.default = counterReducer;
-
-/* Actions */
-
-function increment() {
-  return {
-    type: INCREMENT
-  };
-}
-
-function loginPage() {
-  return {
-    type: LOGIN_PAGE
-  };
-}
-function signupPage() {
-  return {
-    type: SIGNUP_PAGE
-  };
-}
-
-function decrement() {
-  return {
-    type: DECREMENT
-  };
-}
-
-var incrementAsync = exports.incrementAsync = function incrementAsync() {
-  return function (dispatch) {
-    dispatch({
-      type: INCREMENT_REQUESTED
-    });
-
-    return setTimeout(function () {
-      dispatch({
-        type: INCREMENT
-      });
-    }, 3000);
-  };
-};
-
-var decrementAsync = exports.decrementAsync = function decrementAsync() {
-  return function (dispatch) {
-    dispatch({
-      type: DECREMENT_REQUESTED
-    });
-
-    return setTimeout(function () {
-      dispatch({
-        type: DECREMENT
-      });
-    }, 3000);
-  };
-};
-
-// Thunk Example
-function incrementIfEven() {
-  return function (dispatch, getState) {
-    if (getState().counter.get('value') % 2 === 0) {
-      return dispatch(increment());
-    }
-  };
-}
+exports.default = accessReducer;
 
 /***/ }),
 
@@ -47933,9 +47850,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
 
-var _counter = __webpack_require__(/*! ./counter */ "./src/reducers/counter.js");
+var _access = __webpack_require__(/*! ./access */ "./src/reducers/access.js");
 
-var _counter2 = _interopRequireDefault(_counter);
+var _access2 = _interopRequireDefault(_access);
 
 var _loading = __webpack_require__(/*! ./loading */ "./src/reducers/loading.js");
 
@@ -47944,8 +47861,10 @@ var _loading2 = _interopRequireDefault(_loading);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // import { routeReducer } from 'react-router-redux';
+// import counter from './counter';
+
 var rootReducer = (0, _redux.combineReducers)({
-  counter: _counter2.default,
+  access: _access2.default,
   loading: _loading2.default
   //   routing: routeReducer,
 });
