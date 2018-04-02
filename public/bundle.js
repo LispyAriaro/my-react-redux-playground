@@ -49710,6 +49710,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // or
 
 
+var styles = {
+  carouselStyle: {
+    backgroundColor: '#333',
+    // textAlign: 'center',
+    height: '500px'
+  }
+};
+
 function handleSelect(selectedKey) {
   alert('selected ' + selectedKey);
 }
@@ -49792,7 +49800,7 @@ var Home = function (_Component) {
             null,
             _react2.default.createElement(
               _reactBootstrap.Carousel.Item,
-              null,
+              { style: styles.carouselStyle },
               _react2.default.createElement('div', { className: 'glyphicon glyphicon-glass' }),
               _react2.default.createElement(
                 _reactBootstrap.Carousel.Caption,
@@ -49811,7 +49819,7 @@ var Home = function (_Component) {
             ),
             _react2.default.createElement(
               _reactBootstrap.Carousel.Item,
-              null,
+              { style: styles.carouselStyle },
               _react2.default.createElement(
                 _reactBootstrap.Carousel.Caption,
                 null,
@@ -49829,7 +49837,7 @@ var Home = function (_Component) {
             ),
             _react2.default.createElement(
               _reactBootstrap.Carousel.Item,
-              null,
+              { style: styles.carouselStyle },
               _react2.default.createElement(
                 _reactBootstrap.Carousel.Caption,
                 null,

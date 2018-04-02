@@ -16,7 +16,13 @@ import { FieldGroup, FormControl, FormGroup, Checkbox, Radio, Button, ControlLab
 
 import '../css/homePageStyles.css';
 
-
+const styles = {
+  carouselStyle: {
+    backgroundColor: '#333',
+    // textAlign: 'center',
+    height: '500px'
+  }
+};
 
 function handleSelect(selectedKey) {
   alert(`selected ${selectedKey}`);
@@ -70,7 +76,7 @@ class Home extends Component {
 
         <div className="thumbnail col-md-6 col-md-offset-3">
           <Carousel>
-            <Carousel.Item>
+            <Carousel.Item style={styles.carouselStyle}>
               <div className="glyphicon glyphicon-glass"></div>
               <Carousel.Caption>
                 <h3>Intrigue</h3>
@@ -78,14 +84,14 @@ class Home extends Component {
               </Carousel.Caption>
             </Carousel.Item>
 
-            <Carousel.Item>
+            <Carousel.Item style={styles.carouselStyle}>
               <Carousel.Caption>
                 <h3>Suspense</h3>
                 <p>You shall soon find out</p>
               </Carousel.Caption>
             </Carousel.Item>
             
-            <Carousel.Item>
+            <Carousel.Item style={styles.carouselStyle}>
               <Carousel.Caption>
                 <h3>Climax</h3>
                 <p>...</p>
