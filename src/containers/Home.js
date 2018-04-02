@@ -66,46 +66,7 @@ class Home extends Component {
               {button}
             </Nav>
           </Navbar.Collapse>
-        </Navbar>;
-
-        {/* <div className="thumbnail col-md-6 col-md-offset-3">
-          <div id="DemoCarousel" className="carousel slide" data-interval="2000" data-ride="carousel">
-            <ol className="carousel-indicators">
-                <li data-target="#DemoCarousel" data-slide-to="0" className="active"></li>
-                <li data-target="#DemoCarousel" data-slide-to="1"></li>
-                <li data-target="#DemoCarousel" data-slide-to="2"></li>
-            </ol>
-            <div className="carousel-inner">
-                <div className="item active">
-                    <h2>Slide 1</h2>
-                    <div className="carousel-caption">
-                        <h3>This is the First Label</h3>
-                        <p>The Content of the First Slide goes in here</p>
-                    </div>
-                </div>
-                <div className="item">
-                    <h2>Slide 2</h2>
-                    <div className="carousel-caption">
-                        <h3>This is the Second Label</h3>
-                        <p>The Content of the second Slide goes in here</p>
-                    </div>
-                </div>
-                <div className="item">
-                    <h2>Slide 3</h2>
-                    <div className="carousel-caption">
-                        <h3>This is the Third Label</h3>
-                        <p>The Content of the Third Slide goes in here</p>
-                    </div>
-                </div>
-            </div>
-            <a className="carousel-control left" href="#DemoCarousel" data-slide="prev">
-              <span className="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a className="carousel-control right" href="#DemoCarousel" data-slide="next">
-              <span className="glyphicon glyphicon-chevron-right"></span>
-            </a>
-          </div>
-        </div> */}
+        </Navbar>
 
         <div className="thumbnail col-md-6 col-md-offset-3">
           <Carousel>

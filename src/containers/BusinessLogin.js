@@ -6,7 +6,8 @@ import { connect } from 'react-redux'
 
 import {
   loginPage,
-  signupPage
+  signupPage,
+  doLogin
 } from '../actions/access'
 
 
@@ -22,6 +23,10 @@ const styles = {
   },
   cursorStyle: {
     cursor: 'pointer',
+  },
+  loadingStyle: {
+    marginTop: 0,
+    marginBottom: 0
   }
 };
 
@@ -29,12 +34,17 @@ class BusinessLogin extends Component {
   constructor(props) {
     super(props);
     
-    this.goToSignup = this.goToSignup.bind(this);    
+    this.goToSignup = this.goToSignup.bind(this);
+    this.attemptLogin = this.attemptLogin.bind(this);    
   }
 
   goToSignup() {
     this.props.history.push('/mc-admin/businesssignup')
     this.props.signupPage()
+  }
+
+  attemptLogin() {
+    this.props.doLogin('efeariaroo@gmail.com', 'asdffdsa')
   }
 
   render() {
@@ -49,6 +59,12 @@ class BusinessLogin extends Component {
           </Navbar.Header>          
         </Navbar>
 
+        { this.props.loginAttempted &&
+          <div style={styles.loadingStyle}>
+            <div className="dataLoader col-lg-1 col-centered"></div>
+          </div>
+        }
+
         <div className="col-md-6 col-md-offset-3">
           <div className="form-group input-group">
             <span className="input-group-addon"><i className="glyphicon glyphicon-envelope"></i></span>
@@ -60,7 +76,7 @@ class BusinessLogin extends Component {
           </div>
 
           <div className="form-group">
-            <button type="button" className="btn btn-def btn-block btn-lg" style={styles.buttonColorStyles}>
+            <button type="button" className="btn btn-def btn-block btn-lg" style={styles.buttonColorStyles} onClick={this.attemptLogin}>
               <b>Log in</b>
             </button>
           </div>
@@ -78,10 +94,16 @@ class BusinessLogin extends Component {
 
 const mapStateToProps = state => ({
   onLoginPage: state.access.onLoginPage,
-  onSignupPage: state.access.onSignupPage
+  onSignupPage: state.access.onSignupPage,
+  onSignupPage: state.access.onSignupPage,
+  loginAttempted: state.access.loginAttempted,
+  signupAttempted: state.access.signupAttempted  
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({signupPage}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({
+  signupPage,
+  doLogin
+}, dispatch)
 
 export default connect(
   mapStateToProps,

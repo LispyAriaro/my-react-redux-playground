@@ -30,6 +30,7 @@
   },
   "scripts": {
     "builddev": "webpack --mode development",
-    "dev": "webpack-dev-server --mode development --hot --inline --content-base=public --history-api-fallback"
+    "dev0": "webpack-dev-server --mode development --hot --inline --content-base=public --history-api-fallback",
+    "dev": "webpack-dev-server --mode development --hot --config webpack.config.js"
   }
 }

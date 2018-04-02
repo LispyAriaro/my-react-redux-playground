@@ -5,7 +5,7 @@ import AppRoutes from './AppRoutes';
 import store, { history } from './store'
 
 // import './css/app.css';
-
+import './css/dataLoader.css';
 
 var mountNode = document.getElementById("app");
 

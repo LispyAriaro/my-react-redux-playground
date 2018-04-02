@@ -28,6 +28,17 @@ const config = {
             }
         ]
     },
+    devServer: { 
+        inline: true, 
+        // hot:true, 
+        contentBase: 'public',
+        port: '8080',
+        open: true,
+        historyApiFallback: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        }
+    },
     // plugins: [
     //   new HtmlWebPackPlugin({
     //     template: path.join(paths.public, 'index.html')
