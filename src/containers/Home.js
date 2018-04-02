@@ -27,7 +27,7 @@ class Home extends Component {
     super(props);
     
     this.goToLogin = this.goToLogin.bind(this);
-    this.goToSignup = this.goToSignup.bind(this);    
+    this.goToSignup = this.goToSignup.bind(this);
   }
 
   goToLogin() {
@@ -38,7 +38,7 @@ class Home extends Component {
   goToSignup() {
     this.props.history.push('/mc-admin/businesssignup')
     this.props.signupPage()
-  }
+  }  
 
   render() {
     const onLoginPage = this.props.onLoginPage;
@@ -67,6 +67,71 @@ class Home extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>;
+
+        {/* <div className="thumbnail col-md-6 col-md-offset-3">
+          <div id="DemoCarousel" className="carousel slide" data-interval="2000" data-ride="carousel">
+            <ol className="carousel-indicators">
+                <li data-target="#DemoCarousel" data-slide-to="0" className="active"></li>
+                <li data-target="#DemoCarousel" data-slide-to="1"></li>
+                <li data-target="#DemoCarousel" data-slide-to="2"></li>
+            </ol>
+            <div className="carousel-inner">
+                <div className="item active">
+                    <h2>Slide 1</h2>
+                    <div className="carousel-caption">
+                        <h3>This is the First Label</h3>
+                        <p>The Content of the First Slide goes in here</p>
+                    </div>
+                </div>
+                <div className="item">
+                    <h2>Slide 2</h2>
+                    <div className="carousel-caption">
+                        <h3>This is the Second Label</h3>
+                        <p>The Content of the second Slide goes in here</p>
+                    </div>
+                </div>
+                <div className="item">
+                    <h2>Slide 3</h2>
+                    <div className="carousel-caption">
+                        <h3>This is the Third Label</h3>
+                        <p>The Content of the Third Slide goes in here</p>
+                    </div>
+                </div>
+            </div>
+            <a className="carousel-control left" href="#DemoCarousel" data-slide="prev">
+              <span className="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a className="carousel-control right" href="#DemoCarousel" data-slide="next">
+              <span className="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </div> */}
+
+        <div className="thumbnail col-md-6 col-md-offset-3">
+          <Carousel>
+            <Carousel.Item>
+              <div className="glyphicon glyphicon-glass"></div>
+              <Carousel.Caption>
+                <h3>Intrigue</h3>
+                <p>You are curious what this application does, right.</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+
+            <Carousel.Item>
+              <Carousel.Caption>
+                <h3>Suspense</h3>
+                <p>You shall soon find out</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            
+            <Carousel.Item>
+              <Carousel.Caption>
+                <h3>Climax</h3>
+                <p>...</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
+        </div>
       </div>
     );
   }

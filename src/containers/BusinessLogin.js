@@ -40,14 +40,14 @@ class BusinessLogin extends Component {
   render() {
     return (
       <div>
-        {/* <Navbar inverse collapseOnSelect>
+        <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
               <a href="#home">Change</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>          
-        </Navbar>; */}
+        </Navbar>
 
         <div className="col-md-6 col-md-offset-3">
           <div className="form-group input-group">

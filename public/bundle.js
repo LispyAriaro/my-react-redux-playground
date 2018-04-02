@@ -47212,7 +47212,7 @@ var AppRoutes = function AppRoutes() {
         _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _Home2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { path: '/mc-admin/businesslogin', component: _BusinessLogin2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { path: '/mc-admin/businessSignup', component: _BusinessSignup2.default })
         )
@@ -47331,6 +47331,24 @@ var BusinessLogin = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement(
+          _reactBootstrap.Navbar,
+          { inverse: true, collapseOnSelect: true },
+          _react2.default.createElement(
+            _reactBootstrap.Navbar.Header,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Navbar.Brand,
+              null,
+              _react2.default.createElement(
+                'a',
+                { href: '#home' },
+                'Change'
+              )
+            ),
+            _react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)
+          )
+        ),
         _react2.default.createElement(
           'div',
           { className: 'col-md-6 col-md-offset-3' },
@@ -47473,6 +47491,24 @@ var BusinessSignup = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement(
+          _reactBootstrap.Navbar,
+          { inverse: true, collapseOnSelect: true },
+          _react2.default.createElement(
+            _reactBootstrap.Navbar.Header,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Navbar.Brand,
+              null,
+              _react2.default.createElement(
+                'a',
+                { href: '#home' },
+                'Change'
+              )
+            ),
+            _react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)
+          )
+        ),
         _react2.default.createElement(
           'div',
           { className: 'col-md-6 col-md-offset-3' },
@@ -47686,7 +47722,70 @@ var Home = function (_Component) {
             )
           )
         ),
-        ';'
+        ';',
+        _react2.default.createElement(
+          'div',
+          { className: 'thumbnail col-md-6 col-md-offset-3' },
+          _react2.default.createElement(
+            _reactBootstrap.Carousel,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Carousel.Item,
+              null,
+              _react2.default.createElement('div', { className: 'glyphicon glyphicon-glass' }),
+              _react2.default.createElement(
+                _reactBootstrap.Carousel.Caption,
+                null,
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Intrigue'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'You are curious what this application does, right.'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.Carousel.Item,
+              null,
+              _react2.default.createElement(
+                _reactBootstrap.Carousel.Caption,
+                null,
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Suspense'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'You shall soon find out'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.Carousel.Item,
+              null,
+              _react2.default.createElement(
+                _reactBootstrap.Carousel.Caption,
+                null,
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Climax'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  '...'
+                )
+              )
+            )
+          )
+        )
       );
     }
   }]);
