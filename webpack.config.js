@@ -28,12 +28,6 @@ const config = {
             }
         ]
     },
-    devServer: {
-        historyApiFallback: true,
-        inline: true,
-        hot:true,
-        contentBase: 'public'
-    },
     // plugins: [
     //   new HtmlWebPackPlugin({
     //     template: path.join(paths.public, 'index.html')

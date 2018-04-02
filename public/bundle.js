@@ -47390,6 +47390,12 @@ var BusinessLogin = function (_Component) {
             { className: 'form-group text-center' },
             _react2.default.createElement(
               'a',
+              { style: styles.cursorStyle, onClick: this.goToSignup },
+              'Sign up'
+            ),
+            ' | ',
+            _react2.default.createElement(
+              'a',
               { style: styles.cursorStyle },
               'Forgot Password'
             )
@@ -47573,6 +47579,15 @@ var BusinessSignup = function (_Component) {
                 null,
                 'Sign up your business'
               )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group text-center' },
+            _react2.default.createElement(
+              'a',
+              { style: styles.cursorStyle, onClick: this.goToLogin },
+              'Log In'
             )
           )
         )

@@ -80,9 +80,9 @@ class BusinessSignup extends Component {
             </button>
           </div>
 
-          {/* <div className="form-group text-center">
+          <div className="form-group text-center">
             <a style={styles.cursorStyle} onClick={this.goToLogin}>Log In</a>
-          </div> */}
+          </div>
         </div>
       </div>
     );

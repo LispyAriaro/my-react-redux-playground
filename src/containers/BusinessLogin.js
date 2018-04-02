@@ -66,9 +66,7 @@ class BusinessLogin extends Component {
           </div>
 
           <div className="form-group text-center">
-            {/* <a style={styles.cursorStyle} onClick={this.goToSignup}>Sign up</a> |  */}
-            
-            <a style={styles.cursorStyle}>Forgot Password</a>
+            <a style={styles.cursorStyle} onClick={this.goToSignup}>Sign up</a> | <a style={styles.cursorStyle}>Forgot Password</a>
           </div>
         </div>
       </div>
