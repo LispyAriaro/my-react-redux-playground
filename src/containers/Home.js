@@ -9,6 +9,8 @@ import {
   signupPage
 } from '../actions/access'
 
+import { USER_TOKEN, OWNER_OR_SUPERVISOR_DATA } from '../configs';
+
 // import Button from 'react-bootstrap/lib/Button';
 // or
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem, Carousel } from 'react-bootstrap';
@@ -44,7 +46,13 @@ class Home extends Component {
   goToSignup() {
     this.props.history.push('/mc-admin/businesssignup')
     this.props.signupPage()
-  }  
+  }
+
+  componentWillMount() {
+    if(localStorage.getItem(USER_TOKEN)) {
+      this.props.history.push('/mc-admin/businesshome')
+    }
+  }
 
   render() {
     const onLoginPage = this.props.onLoginPage;

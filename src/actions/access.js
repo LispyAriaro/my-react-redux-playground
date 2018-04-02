@@ -33,7 +33,7 @@ let axiosConfig = {
   }
 };
 
-export function doLogin(businessManagerEmail, businessAdminPassword) {
+export function doLogin(businessManagerEmail, businessAdminPassword, history) {
   const postData = {
     email : businessManagerEmail,
     password : businessAdminPassword
@@ -57,11 +57,7 @@ export function doLogin(businessManagerEmail, businessAdminPassword) {
             localStorage.setItem(USER_TOKEN, serverResponse.token);
             localStorage.setItem(OWNER_OR_SUPERVISOR_DATA, JSON.stringify(currentUserData));
         }
-        // if(currentUserData && currentUserData.is_owner) {
-        //   $state.go('mc-admin.businesshome');
-        // } else if(currentUserData && currentUserData.is_supervisor) {
-        //   $state.go('mc-admin.businesshome');
-        // }
+
 
         dispatch({
           type: LOGIN_RESULT,
@@ -70,6 +66,12 @@ export function doLogin(businessManagerEmail, businessAdminPassword) {
             data: serverResponse.data
           }
         });
+
+        if(currentUserData && currentUserData.is_owner) {
+          history.push('/mc-admin/businesshome')
+        } else if(currentUserData && currentUserData.is_supervisor) {
+          history.push('/mc-admin/businesshome')
+        }
       } else {
         dispatch({
           type: LOGIN_RESULT,

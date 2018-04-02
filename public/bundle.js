@@ -49096,7 +49096,7 @@ module.exports = function(originalModule) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -49115,22 +49115,27 @@ var _BusinessSignup = __webpack_require__(/*! ./containers/BusinessSignup */ "./
 
 var _BusinessSignup2 = _interopRequireDefault(_BusinessSignup);
 
+var _BusinessHome = __webpack_require__(/*! ./containers/BusinessHome */ "./src/containers/BusinessHome.js");
+
+var _BusinessHome2 = _interopRequireDefault(_BusinessHome);
+
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AppRoutes = function AppRoutes() {
-    return _react2.default.createElement(
-        _reactRouterDom.BrowserRouter,
-        null,
-        _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/mc-admin/businesslogin', component: _BusinessLogin2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/mc-admin/businessSignup', component: _BusinessSignup2.default })
-        )
-    );
+  return _react2.default.createElement(
+    _reactRouterDom.BrowserRouter,
+    null,
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/mc-admin/businesslogin', component: _BusinessLogin2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/mc-admin/businesssignup', component: _BusinessSignup2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/mc-admin/businesshome', component: _BusinessHome2.default })
+    )
+  );
 };
 
 exports.default = AppRoutes;
@@ -49193,7 +49198,7 @@ var axiosConfig = {
   }
 };
 
-function doLogin(businessManagerEmail, businessAdminPassword) {
+function doLogin(businessManagerEmail, businessAdminPassword, history) {
   var postData = {
     email: businessManagerEmail,
     password: businessAdminPassword
@@ -49216,11 +49221,6 @@ function doLogin(businessManagerEmail, businessAdminPassword) {
           localStorage.setItem(_configs.USER_TOKEN, serverResponse.token);
           localStorage.setItem(_configs.OWNER_OR_SUPERVISOR_DATA, JSON.stringify(currentUserData));
         }
-        // if(currentUserData && currentUserData.is_owner) {
-        //   $state.go('mc-admin.businesshome');
-        // } else if(currentUserData && currentUserData.is_supervisor) {
-        //   $state.go('mc-admin.businesshome');
-        // }
 
         dispatch({
           type: LOGIN_RESULT,
@@ -49229,6 +49229,12 @@ function doLogin(businessManagerEmail, businessAdminPassword) {
             data: serverResponse.data
           }
         });
+
+        if (currentUserData && currentUserData.is_owner) {
+          history.push('/mc-admin/businesshome');
+        } else if (currentUserData && currentUserData.is_supervisor) {
+          history.push('/mc-admin/businesshome');
+        }
       } else {
         dispatch({
           type: LOGIN_RESULT,
@@ -49279,6 +49285,137 @@ Object.defineProperty(exports, "__esModule", {
 var USER_TOKEN = exports.USER_TOKEN = "userToken";
 var OWNER_OR_SUPERVISOR_DATA = exports.OWNER_OR_SUPERVISOR_DATA = "ownerOrSupervisorData";
 var CURRENT_PAGE_HEADER = exports.CURRENT_PAGE_HEADER = "currentPageHeader";
+
+/***/ }),
+
+/***/ "./src/containers/BusinessHome.js":
+/*!****************************************!*\
+  !*** ./src/containers/BusinessHome.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import {
+//   loginPage,
+//   signupPage,
+//   doLogin
+// } from '../actions/access'
+
+var styles = {
+  buttonColorStyles: {
+    backgroundColor: '#38465b',
+    color: '#ffffff'
+  },
+  cursorStyle: {
+    cursor: 'pointer'
+  },
+  loadingStyle: {
+    marginTop: 0,
+    marginBottom: 0
+  }
+};
+
+var BusinessHome = function (_Component) {
+  _inherits(BusinessHome, _Component);
+
+  function BusinessHome(props) {
+    _classCallCheck(this, BusinessHome);
+
+    var _this = _possibleConstructorReturn(this, (BusinessHome.__proto__ || Object.getPrototypeOf(BusinessHome)).call(this, props));
+
+    _this.logOut = _this.logOut.bind(_this);
+    return _this;
+  }
+
+  _createClass(BusinessHome, [{
+    key: 'logOut',
+    value: function logOut() {
+      // this.props.history.push('/mc-admin/businesslogin')
+      // this.props.loginPage()
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          _reactBootstrap.Navbar,
+          { inverse: true, collapseOnSelect: true },
+          _react2.default.createElement(
+            _reactBootstrap.Navbar.Header,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Navbar.Brand,
+              null,
+              _react2.default.createElement(
+                'a',
+                { href: '#home' },
+                'Change'
+              )
+            ),
+            _react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Navbar.Collapse,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Nav,
+              { pullRight: true },
+              _react2.default.createElement(
+                _reactBootstrap.NavItem,
+                { eventKey: 1, href: '#', onSelect: this.logOut },
+                'Log Out'
+              )
+            )
+          )
+        ),
+        'home'
+      );
+    }
+  }]);
+
+  return BusinessHome;
+}(_react.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return (0, _redux.bindActionCreators)({}, dispatch);
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)((0, _reactRouterDom.withRouter)(BusinessHome));
 
 /***/ }),
 
@@ -49348,6 +49485,12 @@ var BusinessLogin = function (_Component) {
 
     _this.goToSignup = _this.goToSignup.bind(_this);
     _this.attemptLogin = _this.attemptLogin.bind(_this);
+
+    _this.emailAddress = '';
+    _this.password = '';
+
+    _this.onChangeEmail = _this.onChangeEmail.bind(_this);
+    _this.onChangePassword = _this.onChangePassword.bind(_this);
     return _this;
   }
 
@@ -49360,7 +49503,19 @@ var BusinessLogin = function (_Component) {
   }, {
     key: 'attemptLogin',
     value: function attemptLogin() {
-      this.props.doLogin('efeariaroo@gmail.com', 'asdffdsa');
+      this.props.doLogin(this.emailAddress, this.password, this.props.history);
+    }
+  }, {
+    key: 'onChangeEmail',
+    value: function onChangeEmail(e) {
+      var newText = e.target.value;
+      this.emailAddress = newText;
+    }
+  }, {
+    key: 'onChangePassword',
+    value: function onChangePassword(e) {
+      var newText = e.target.value;
+      this.password = newText;
     }
   }, {
     key: 'render',
@@ -49402,7 +49557,8 @@ var BusinessLogin = function (_Component) {
               { className: 'input-group-addon' },
               _react2.default.createElement('i', { className: 'glyphicon glyphicon-envelope' })
             ),
-            _react2.default.createElement('input', { className: 'form-control input-lg', type: 'text', name: 'businessAdminEmail', placeholder: 'Email address' })
+            _react2.default.createElement('input', { className: 'form-control input-lg', type: 'text', name: 'businessAdminEmail', placeholder: 'Email address',
+              onChange: this.onChangeEmail })
           ),
           _react2.default.createElement(
             'div',
@@ -49412,7 +49568,8 @@ var BusinessLogin = function (_Component) {
               { className: 'input-group-addon' },
               _react2.default.createElement('i', { className: 'glyphicon glyphicon-lock' })
             ),
-            _react2.default.createElement('input', { className: 'form-control input-lg', type: 'password', name: 'password', placeholder: 'Password' })
+            _react2.default.createElement('input', { className: 'form-control input-lg', type: 'password', name: 'password', placeholder: 'Password',
+              onChange: this.onChangePassword })
           ),
           _react2.default.createElement(
             'div',
@@ -49449,8 +49606,6 @@ var BusinessLogin = function (_Component) {
 
   return BusinessLogin;
 }(_react.Component);
-
-// export default BusinessLogin;
 
 var mapStateToProps = function mapStateToProps(state) {
   var _ref;
@@ -49694,6 +49849,8 @@ var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-r
 
 var _access = __webpack_require__(/*! ../actions/access */ "./src/actions/access.js");
 
+var _configs = __webpack_require__(/*! ../configs */ "./src/configs.js");
+
 var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 
 __webpack_require__(/*! ../css/homePageStyles.css */ "./src/css/homePageStyles.css");
@@ -49746,6 +49903,13 @@ var Home = function (_Component) {
     value: function goToSignup() {
       this.props.history.push('/mc-admin/businesssignup');
       this.props.signupPage();
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      if (localStorage.getItem(_configs.USER_TOKEN)) {
+        this.props.history.push('/mc-admin/businesshome');
+      }
     }
   }, {
     key: 'render',

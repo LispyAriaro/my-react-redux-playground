@@ -35,7 +35,13 @@ class BusinessLogin extends Component {
     super(props);
     
     this.goToSignup = this.goToSignup.bind(this);
-    this.attemptLogin = this.attemptLogin.bind(this);    
+    this.attemptLogin = this.attemptLogin.bind(this);
+
+    this.emailAddress = '';
+    this.password = '';
+
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
   }
 
   goToSignup() {
@@ -44,7 +50,17 @@ class BusinessLogin extends Component {
   }
 
   attemptLogin() {
-    this.props.doLogin('efeariaroo@gmail.com', 'asdffdsa')
+    this.props.doLogin(this.emailAddress, this.password, this.props.history)
+  }
+
+  onChangeEmail(e) {  
+    const newText = e.target.value;
+    this.emailAddress = newText;
+  }
+
+  onChangePassword(e) {
+    const newText = e.target.value;
+    this.password = newText;
   }
 
   render() {
@@ -68,11 +84,13 @@ class BusinessLogin extends Component {
         <div className="col-md-6 col-md-offset-3">
           <div className="form-group input-group">
             <span className="input-group-addon"><i className="glyphicon glyphicon-envelope"></i></span>
-            <input className="form-control input-lg" type="text" name='businessAdminEmail' placeholder="Email address" />
+            <input className="form-control input-lg" type="text" name='businessAdminEmail' placeholder="Email address" 
+              onChange={this.onChangeEmail} />
           </div>
           <div className="form-group input-group">
             <span className="input-group-addon"><i className="glyphicon glyphicon-lock"></i></span>
-            <input className="form-control input-lg" type="password" name='password' placeholder="Password" />
+            <input className="form-control input-lg" type="password" name='password' placeholder="Password" 
+              onChange={this.onChangePassword} />
           </div>
 
           <div className="form-group">
@@ -89,8 +107,6 @@ class BusinessLogin extends Component {
     );
   }
 }
-
-// export default BusinessLogin;
 
 const mapStateToProps = state => ({
   onLoginPage: state.access.onLoginPage,

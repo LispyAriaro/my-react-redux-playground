@@ -33,7 +33,7 @@ function accessReducer(state = initialState, action = {}) {
       return {...state, signupAttempted: false};
       
     default:
-        return state;
+      return state;
   }
 }
 
