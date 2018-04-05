@@ -10,7 +10,7 @@ import {
 } from '../actions/access'
 
 
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem, DropdownButton} from 'react-bootstrap';
+import { Nav, Navbar, NavItem, NavDropdown, MenuItem, DropdownButton } from 'react-bootstrap';
 
 const styles = {
   buttonColorStyles: {
@@ -25,7 +25,7 @@ const styles = {
 class BusinessSignup extends Component {
   constructor(props) {
     super(props);
-    
+
     this.goToLogin = this.goToLogin.bind(this);
   }
 
@@ -43,7 +43,7 @@ class BusinessSignup extends Component {
               <a href="#home">Change</a>
             </Navbar.Brand>
             <Navbar.Toggle />
-          </Navbar.Header>          
+          </Navbar.Header>
         </Navbar>
 
         <div className="col-md-6 col-md-offset-3">
@@ -108,7 +108,7 @@ const mapStateToProps = state => ({
   onSignupPage: state.access.onSignupPage
 })
 
-const mapDispatchToProps = dispatch => 
+const mapDispatchToProps = dispatch =>
   bindActionCreators({
     loginPage
   }, dispatch)

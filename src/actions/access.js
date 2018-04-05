@@ -35,64 +35,64 @@ let axiosConfig = {
 
 export function doLogin(businessManagerEmail, businessAdminPassword, history) {
   const postData = {
-    email : businessManagerEmail,
-    password : businessAdminPassword
+    email: businessManagerEmail,
+    password: businessAdminPassword
   }
 
   return dispatch => {
     dispatch({
       type: LOGIN_ATTEMPTED
     });
-  
+
     axios.post('http://localhost:2000/api/v1/businesslogin', postData, axiosConfig)
-    .then((res) => {
-      const serverResponse = res.data;
-      console.log("serverResponse: ", serverResponse);
+      .then((res) => {
+        const serverResponse = res.data;
+        console.log("serverResponse: ", serverResponse);
 
-      if(serverResponse && serverResponse.success) {
-        var currentUserData = serverResponse.data;
-        localStorage.clear();
+        if (serverResponse && serverResponse.success) {
+          var currentUserData = serverResponse.data;
+          localStorage.clear();
 
-        if(currentUserData && (currentUserData.is_owner || currentUserData.is_supervisor)) {
+          if (currentUserData && (currentUserData.is_owner || currentUserData.is_supervisor)) {
             localStorage.setItem(USER_TOKEN, serverResponse.token);
             localStorage.setItem(OWNER_OR_SUPERVISOR_DATA, JSON.stringify(currentUserData));
-        }
-
-
-        dispatch({
-          type: LOGIN_RESULT,
-          payload: {
-            success: true,
-            data: serverResponse.data
           }
-        });
 
-        if(currentUserData && currentUserData.is_owner) {
-          history.push('/mc-admin/businesshome')
-        } else if(currentUserData && currentUserData.is_supervisor) {
-          history.push('/mc-admin/businesshome')
+
+          dispatch({
+            type: LOGIN_RESULT,
+            payload: {
+              success: true,
+              data: serverResponse.data
+            }
+          });
+
+          if (currentUserData && currentUserData.is_owner) {
+            history.push('/mc-admin/businesshome')
+          } else if (currentUserData && currentUserData.is_supervisor) {
+            history.push('/mc-admin/businesshome')
+          }
+        } else {
+          dispatch({
+            type: LOGIN_RESULT,
+            payload: {
+              success: false,
+              message: serverResponse.message
+            }
+          });
         }
-      } else {
+      })
+      .catch((err) => {
+        console.log("AXIOS ERROR: ", err);
+
         dispatch({
           type: LOGIN_RESULT,
           payload: {
             success: false,
-            message: serverResponse.message
+            message: err.message
           }
         });
-      }
-    })
-    .catch((err) => {
-      console.log("AXIOS ERROR: ", err);
-
-      dispatch({
-        type: LOGIN_RESULT,
-        payload: {
-          success: false,
-          message: err.message
-        }
-      });
-    })
+      })
 
     // axios.get('/api/v1/businesslogin')
     //   .then(res => {

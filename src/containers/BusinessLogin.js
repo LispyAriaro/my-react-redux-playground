@@ -12,7 +12,7 @@ import {
 
 
 
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 const styles = {
   buttonColorStyles: {
@@ -33,11 +33,12 @@ const styles = {
 class BusinessLogin extends Component {
   constructor(props) {
     super(props);
-    
+
     this.goToSignup = this.goToSignup.bind(this);
     this.attemptLogin = this.attemptLogin.bind(this);
 
     this.emailAddress = '';
+
     this.password = '';
 
     this.onChangeEmail = this.onChangeEmail.bind(this);
@@ -53,7 +54,7 @@ class BusinessLogin extends Component {
     this.props.doLogin(this.emailAddress, this.password, this.props.history)
   }
 
-  onChangeEmail(e) {  
+  onChangeEmail(e) {
     const newText = e.target.value;
     this.emailAddress = newText;
   }
@@ -72,10 +73,10 @@ class BusinessLogin extends Component {
               <a href="#home">Change</a>
             </Navbar.Brand>
             <Navbar.Toggle />
-          </Navbar.Header>          
+          </Navbar.Header>
         </Navbar>
 
-        { this.props.loginAttempted &&
+        {this.props.loginAttempted &&
           <div style={styles.loadingStyle}>
             <div className="dataLoader col-lg-1 col-centered"></div>
           </div>
@@ -84,12 +85,12 @@ class BusinessLogin extends Component {
         <div className="col-md-6 col-md-offset-3">
           <div className="form-group input-group">
             <span className="input-group-addon"><i className="glyphicon glyphicon-envelope"></i></span>
-            <input className="form-control input-lg" type="text" name='businessAdminEmail' placeholder="Email address" 
+            <input className="form-control input-lg" type="text" name='businessAdminEmail' placeholder="Email address"
               onChange={this.onChangeEmail} />
           </div>
           <div className="form-group input-group">
             <span className="input-group-addon"><i className="glyphicon glyphicon-lock"></i></span>
-            <input className="form-control input-lg" type="password" name='password' placeholder="Password" 
+            <input className="form-control input-lg" type="password" name='password' placeholder="Password"
               onChange={this.onChangePassword} />
           </div>
 
@@ -113,7 +114,7 @@ const mapStateToProps = state => ({
   onSignupPage: state.access.onSignupPage,
   onSignupPage: state.access.onSignupPage,
   loginAttempted: state.access.loginAttempted,
-  signupAttempted: state.access.signupAttempted  
+  signupAttempted: state.access.signupAttempted
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

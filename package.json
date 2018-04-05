@@ -36,7 +36,7 @@
     "builddev": "webpack --mode development",
     "dev0": "webpack-dev-server --mode development --hot --inline --content-base=public --history-api-fallback",
     "dev": "webpack-dev-server --mode development --hot --config webpack.config.js",
-    "lint": "eslint app/",
-    "lint:fix": "eslint app/ --fix"
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix"
   }
 }
